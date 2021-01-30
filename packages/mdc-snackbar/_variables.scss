@@ -46,6 +46,12 @@ $mobile-breakpoint: 480px !default;
 $viewport-margin-narrow: 8px !default;
 $viewport-margin-wide: 24px !default;
 $padding: 8px !default;
+// 8px padding minus 1px border.
+$padding-minus-border: 7px !default;
+// 13px top/bottom padding needed (with 1px border) to make the height 48px.
+$label-top-bottom-padding: 13px !default;
+// 16px padding minus 1px border.
+$label-left-padding: 15px !default;
 
 $elevation: 6 !default;
 $shape-radius: small !default; // Key from shape.$category-keywords or CSS length value (e.g., 4px)

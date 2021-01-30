@@ -98,12 +98,17 @@
 
   .mdc-snackbar__surface {
     @include feature-targeting.targets($feat-structure) {
-      @include rtl-mixins.reflexive-property(padding, 0, variables.$padding);
+      @include rtl-mixins.reflexive-property(
+        padding,
+        0,
+        variables.$padding-minus-border
+      );
 
       display: flex;
       align-items: center;
       justify-content: flex-start;
       box-sizing: border-box;
+      border: 1px solid transparent; // Border around the snackbar surface for highcontrast mode.
       transform: scale(0.8);
       opacity: 0;
     }
@@ -142,17 +147,19 @@
     @include typography.typography(variables.$label-type-scale, $query: $query);
 
     @include feature-targeting.targets($feat-structure) {
-      @include rtl-mixins.reflexive-property(padding, 16px, variables.$padding);
+      @include rtl-mixins.reflexive-property(
+        padding,
+        variables.$label-left-padding,
+        variables.$padding
+      );
 
       width: 100%;
       flex-grow: 1;
       box-sizing: border-box;
       margin: 0;
       visibility: hidden;
-
-      // 14px top/bottom padding needed to make the height 48px.
-      padding-top: 14px;
-      padding-bottom: 14px;
+      padding-top: variables.$label-top-bottom-padding;
+      padding-bottom: variables.$label-top-bottom-padding;
     }
   }
 
@@ -302,7 +309,6 @@
 
   .mdc-snackbar__label {
     @include feature-targeting.targets($feat-structure) {
-      @include rtl-mixins.reflexive-property(padding, 16px, 8px);
       padding-bottom: 12px;
     }
   }
@@ -317,7 +323,7 @@
   .mdc-snackbar__actions {
     @include feature-targeting.targets($feat-structure) {
       align-self: flex-end;
-      margin-bottom: variables.$padding;
+      margin-bottom: variables.$padding-minus-border;
     }
   }
 }
